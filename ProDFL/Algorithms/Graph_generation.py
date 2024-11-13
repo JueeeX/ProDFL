@@ -52,7 +52,7 @@ def print_adjacency_matrix(G):
 
 # Parameters
 num_clients = 50  # Total number of clients (nodes)
-communication_probability = 0.1  # Probability of communication between two clients
+communication_probability = 0.5  # Probability of communication between two clients
 
 # Generate the communication graph
 communication_graph = generate_communication_graph(num_clients, communication_probability)
