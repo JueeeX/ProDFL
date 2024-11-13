@@ -64,21 +64,3 @@ def compute_confidence_matrix(model, dataloader, loss_fn, s_t, batch_size, E, xi
 
     # Return the stacked confidence matrix
     return torch.stack(stacked_conf_matrix)
-
-
-# Example usage
-if __name__ == "__main__":
-    # Assume you have already defined your model, data loader, and loss function
-
-    model = ...  # Define your model here (e.g., LeNet-5, ResNet-18, VGG-16)
-    dataloader = ...  # Define your data loader (e.g., for MNIST, CIFAR-10, CIFAR-100)
-    loss_fn = nn.CrossEntropyLoss()
-    s_t = 1.0  # Scaling factor
-    batch_size = 32
-    E = 5  # Total number of epochs for local training
-    xi = 32  # Mini-batch size
-
-    # Generate the confidence matrix
-    confidence_matrix = compute_confidence_matrix(model, dataloader, loss_fn, s_t, batch_size, E, xi)
-
-    print("Generated Confidence Matrix:", confidence_matrix)
