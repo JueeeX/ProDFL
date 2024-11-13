@@ -15,7 +15,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 batch_size = 64
 epochs = 5
 learning_rate = 0.01
-gamma = 0.8  # Sign flipping probability parameter
+gamma = 0.9  # Sign flipping probability parameter
 
 def compute_cosine_similarity(vec_a, vec_b):
     """
