@@ -42,7 +42,7 @@ def compute_confidence_coulomb_force_coefficient(M_i_t, M_j_t, resultant_force_i
     return fc
 
 
-def compute_outlier_coulomb_force(M_i_t, M_j_t, m=2):
+def compute_outlier_coulomb_force(M_i_t, M_j_t, m):
     """
     Compute the Outlier Coulomb Force between two confidence matrices.
     """
@@ -52,14 +52,12 @@ def compute_outlier_coulomb_force(M_i_t, M_j_t, m=2):
     # Calculate the unit vector r
     r = (M_i_t - M_j_t) / distance if distance != 0 else torch.zeros_like(M_i_t)
 
-    # Compute the electric field intensity E and the magnitude of the Coulomb force
-    E = distance ** (m - 1)
-    k_m = 1  # Assume k_m = 1 (constant)
-    force_magnitude = k_m * E
+    # Compute the Outlier Coulomb Force magnitude
+    force_magnitude = distance ** torch.log(torch.tensor(m - 1, dtype=torch.float32))
 
-    # Calculate the Coulomb force vector
-    force = force_magnitude * r
-    return force, force_magnitude
+    # Calculate the Outlier Coulomb Force vector
+    outlier_force = force_magnitude * r
+    return outlier_force, force_magnitude
 
 
 def rsa_with_fc(batch_size=64, epochs=5, lr=0.01, attack=None, save_model=False, save_results=False):
