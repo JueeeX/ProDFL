@@ -10,7 +10,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Hyperparameters
 batch_size = 64
-epochs = 10
+epochs = 5
 learning_rate = 0.01
 
 
@@ -62,7 +62,7 @@ def compute_outlier_coulomb_force(M_i_t, M_j_t, m=2):
     return force, force_magnitude
 
 
-def rsa_with_fc(batch_size=64, epochs=10, lr=0.01, attack=None, save_model=False, save_results=False):
+def rsa_with_fc(batch_size=64, epochs=5, lr=0.01, attack=None, save_model=False, save_results=False):
     """
     Perform RSA-based aggregation with Confidence Coulomb Force.
     """
